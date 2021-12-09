@@ -1,13 +1,147 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Meow+Script&family=Readex+Pro&display=swap');
+
+:root {
+  --primary-font: 'Readex Pro', sans-serif;
+  --secondary-font: 'Meow Script', cursive;
+  --primary-black: #000;
+  --light-gray: #f8f9fa;
+  --light-gray-1: #e9ecef;
+  --light-gray-2: #dee2e6;
+  --light-gray-3: #e9ecef;
+  --light-gray-4: #6c757d;
+  --light-gray-4: #495057;
+  --primary-white: #fff;
+  --color-btn-primary: #006241;
+  --color-btn-secondary: #d50032;
+  --radius: 5px;
+  --transition: all 0.3s linear;
+}
+*,
+::after,
+::before {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background: #000;
+  color: #fff;
+}
+main {
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 1rem;
+}
+.btn {
+  padding: 0.375rem 0.775rem;
+  background: var(--light-gray-3);
+  color: #000;
+  border: none;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+.btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* SECTION-TITLE */
+.section-title {
+  text-align: center;
+  font-family: var(--secondary-font);
+}
+.section-title .underline {
+  height: 0.25rem;
+  width: 4rem;
+  background: #fff;
+  margin: 1rem auto;
+}
+
+/* FORM */
+.todo-form {
+  width: 85vw;
+  max-width: 1170px;
+  margin: 2rem auto;
+}
+.todo-form .todo-input {
+  width: 100%;
+  max-width: 35rem;
+  display: block;
+  border: none;
+  outline: none;
+  appearance: none;
+  padding: 1em;
+  margin: 1rem 0;
+  height: 2rem;
+  border-radius: var(--radius);
+}
+.todo-form button:disabled {
+  cursor: not-allowed;
+}
+/* TODOS */
+.todos {
+  width: 85vw;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+.todo {
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #fff;
+}
+.todo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 1rem;
+}
+.todo-header h3 {
+  color: var(--light-gray-4);
+  max-width: 15rem;
+  word-wrap: break-word;
+}
+.icons i {
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.todo-header button:nth-child(1) {
+  color: var(--color-btn-primary);
+  background: transparent;
+  border: none;
+  margin-right: 1rem;
+}
+.todo-header button:nth-child(2) {
+  color: var(--color-btn-secondary);
+  background: transparent;
+  border: none;
+}
+.todo-exp {
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: var(--light-gray-2);
+  word-wrap: break-word;
+}
+
+@media screen and (min-width: 568px) {
+  .todos {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
+  }
 }
