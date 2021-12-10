@@ -7,6 +7,8 @@ import {
   DELETE_TODO,
   EDIT_TODO,
   FINISH_EDIT,
+  CLOSE_LOADING,
+  CLOSE_MODAL,
 } from './actions';
 
 const AppContext = React.createContext();
@@ -16,7 +18,7 @@ const initialState = {
   explanation: '',
   todos: [],
   isLoading: false,
-  alert: { show: false, msg: '' },
+  alert: { show: false, status: '', msg: '' },
   isEditing: false,
   EditingID: null,
 };
@@ -50,6 +52,14 @@ export const AppProvider = ({ children }) => {
     console.log('1');
   };
 
+  const closeLoading = () => {
+    dispatch({ type: CLOSE_LOADING });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: CLOSE_MODAL });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -60,6 +70,8 @@ export const AppProvider = ({ children }) => {
         deleteTodo,
         editTodo,
         finishEdit,
+        closeLoading,
+        closeModal,
       }}
     >
       {children}

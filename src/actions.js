@@ -4,3 +4,5 @@ export const ADD_TODO = 'ADD_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 export const EDIT_TODO = 'EDIT_TODO';
 export const FINISH_EDIT = 'FINISH_EDIT';
+export const CLOSE_LOADING = 'CLOSE_LOADING';
+export const CLOSE_MODAL = 'CLOSE_MODAL';

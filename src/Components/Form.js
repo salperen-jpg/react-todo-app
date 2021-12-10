@@ -1,9 +1,18 @@
 import React from 'react';
 import { useGlobalContext } from '../context';
+import Alert from './Alert';
 
 const Form = () => {
-  const { todo, setTodo, addTodo, explanation, setExp, isEditing, finishEdit } =
-    useGlobalContext();
+  const {
+    todo,
+    setTodo,
+    addTodo,
+    explanation,
+    setExp,
+    isEditing,
+    finishEdit,
+    alert,
+  } = useGlobalContext();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -35,6 +44,7 @@ const Form = () => {
         <button className='btn' disabled={!explanation || !todo} type='submit'>
           {isEditing ? 'Edit' : 'Add Todo'}
         </button>
+        {alert.show && <Alert />}
       </form>
     </div>
   );
