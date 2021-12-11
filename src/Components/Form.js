@@ -8,10 +8,12 @@ const Form = () => {
     setTodo,
     addTodo,
     explanation,
+    urgency,
     setExp,
     isEditing,
     finishEdit,
     alert,
+    setUrgency,
   } = useGlobalContext();
 
   const submitHandler = (e) => {
@@ -41,11 +43,31 @@ const Form = () => {
           placeholder='Add Exp....'
           className='todo-input exp'
         />
-        <button className='btn' disabled={!explanation || !todo} type='submit'>
+        <select
+          name=''
+          id=''
+          className='number-input'
+          value={urgency}
+          onChange={(e) => setUrgency(parseInt(e.target.value))}
+        >
+          <option value='0' selected>
+            0
+          </option>
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+        </select>
+        <button
+          className='btn'
+          disabled={!explanation || !todo || !urgency}
+          type='submit'
+        >
           {isEditing ? 'Edit' : 'Add Todo'}
         </button>
-        {alert.show && <Alert />}
       </form>
+      {alert.show && <Alert />}
     </div>
   );
 };

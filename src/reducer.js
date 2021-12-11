@@ -7,6 +7,7 @@ import {
   FINISH_EDIT,
   CLOSE_LOADING,
   CLOSE_MODAL,
+  SET_URGENCY,
 } from './actions';
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -14,6 +15,8 @@ export const reducer = (state, action) => {
       return { ...state, todo: action.payload };
     case SET_EXP:
       return { ...state, explanation: action.payload };
+    case SET_URGENCY:
+      return { ...state, urgency: action.payload };
     case ADD_TODO:
       return {
         ...state,
@@ -23,10 +26,12 @@ export const reducer = (state, action) => {
             id: state.todos.length + 1,
             title: state.todo,
             exp: state.explanation,
+            urgency: state.urgency,
           },
         ],
         todo: '',
         explanation: '',
+        urgency: '',
         isLoading: true,
         alert: {
           show: true,
@@ -45,6 +50,7 @@ export const reducer = (state, action) => {
           msg: 'Todo is deleted',
         },
       };
+
     case EDIT_TODO:
       let editingItem = state.todos.find((todo) => todo.id === action.payload);
       console.log(editingItem);
@@ -54,6 +60,7 @@ export const reducer = (state, action) => {
         EditingID: editingItem.id,
         todo: editingItem.title,
         explanation: editingItem.exp,
+        urgency: editingItem.urgency,
       };
     case FINISH_EDIT:
       return {
@@ -64,11 +71,12 @@ export const reducer = (state, action) => {
               ...todo,
               title: state.todo,
               exp: state.explanation,
+              urgency: state.urgency,
             };
           }
           return todo;
         }),
-        isEditing: true,
+        isEditing: false,
         EditingID: null,
         todo: '',
         explanation: '',

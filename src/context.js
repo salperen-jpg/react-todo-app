@@ -9,6 +9,7 @@ import {
   FINISH_EDIT,
   CLOSE_LOADING,
   CLOSE_MODAL,
+  SET_URGENCY,
 } from './actions';
 
 const AppContext = React.createContext();
@@ -16,6 +17,7 @@ const AppContext = React.createContext();
 const initialState = {
   todo: '',
   explanation: '',
+  urgency: 0,
   todos: [],
   isLoading: false,
   alert: { show: false, status: '', msg: '' },
@@ -34,6 +36,10 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: SET_EXP, payload: exp });
   };
 
+  const setUrgency = (num) => {
+    dispatch({ type: SET_URGENCY, payload: num });
+  };
+
   const addTodo = () => {
     const id = Math.random();
     dispatch({ type: ADD_TODO, payload: id });
@@ -49,7 +55,6 @@ export const AppProvider = ({ children }) => {
 
   const finishEdit = () => {
     dispatch({ type: FINISH_EDIT });
-    console.log('1');
   };
 
   const closeLoading = () => {
@@ -72,6 +77,7 @@ export const AppProvider = ({ children }) => {
         finishEdit,
         closeLoading,
         closeModal,
+        setUrgency,
       }}
     >
       {children}
